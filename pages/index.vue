@@ -1,10 +1,8 @@
-<template>
-    <div>
-        <h1> HELLO WORLD 2 </h1>
-        <h4> ____________________ </h4>
-        <ul>
-            <li> aujourd'hui </li>
-            <li> l'arbre est grand </li>
-        </ul>
-    </div>
+<template lang="pug">
+    div
+        h1 HELLO WORLD 2 
+        h4 ____________________ 
+        ul
+            li aujourd'hui 
+            li l'arbre est grand 
 </template>
