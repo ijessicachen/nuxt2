@@ -8,5 +8,9 @@
   },
   "dependencies": {
     "nuxt": "^2.15.8"
+  },
+  "devDependencies": {
+    "pug": "^3.0.2",
+    "pug-plain-loader": "^1.1.0"
   }
 }
