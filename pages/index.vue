@@ -3,12 +3,15 @@
         h1  HELLO WORLD 2 
         h4  ____________________ 
         ul
-            li  aujourd'hui 
-            li  l'arbre est grand 
+            li  heehee
         
         //try the button component.
         v-btn(
           depressed
           color = "primary"
-        ) Normal
+        ) • 
+        v-btn(
+          color = "primary"
+          block
+        ) 0
 </template>
