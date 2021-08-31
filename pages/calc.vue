@@ -44,6 +44,7 @@ v-app
                  large
                  fab
                  color = "deep-purple darken-4"
+                 @click = "numberClick(n)"
                 ) 
                     v-icon(
                         color = "grey lighten-5"
@@ -64,6 +65,7 @@ v-app
                  large
                  fab
                  color = "deep-purple darken-4"
+                 @click = "numberClick(n)"
                 ) 
                     v-icon(
                         color = "grey lighten-5"
@@ -141,14 +143,21 @@ v-app
 export default {
    data: function(){
        return{
-           result: null 
+           result: "0" 
        };
    },
 
    methods: {
        //number button clicking
        numberClick: function(n) {
-           this.result = n;
+
+           if( this.result === "0" || this.result === null ){
+               this.result = "" + n;
+           }
+           else{
+              this.result = this.result + "" +  n;
+           }
+
        },
   }
 }
