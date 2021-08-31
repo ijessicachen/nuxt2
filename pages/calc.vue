@@ -12,7 +12,8 @@ v-app
                 v-text-field(
                     filled
                     clearable
-                )
+                    v-model = "result"
+                ) 
             tr
               td( 
                 v-for = "n in [7, 8, 9]"
@@ -22,6 +23,7 @@ v-app
                     large
                     fab
                     color = "deep-purple darken-4"
+                    @click = "numberClick(n)"
                  ) 
                      v-icon(
                          color = "grey lighten-5"
@@ -135,3 +137,19 @@ v-app
                     
           
 </template>
+<script>
+export default {
+   data: function(){
+       return{
+           result: null 
+       };
+   },
+
+   methods: {
+       //number button clicking
+       numberClick: function(n) {
+           this.result = n;
+       },
+  }
+}
+</script>
