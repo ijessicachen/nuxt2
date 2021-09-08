@@ -33,6 +33,7 @@ v-app
                  large
                  fab
                  color = "red lighten-1"
+                 @click = "operations('x')"
                 ) 
                     v-icon mdi-close
             tr
@@ -83,6 +84,7 @@ v-app
                  large
                  fab
                  color = "deep-purple darken-4"
+                 @click = "numberClick(0)"
                 ) 
                     v-icon(
                         color = "grey lighten-5"
@@ -132,6 +134,7 @@ v-app
                  large 
                  color = "red lighten-1"
                  block
+                 @click = "operations('=')"
                 ) 
                     v-icon(
                        large
@@ -143,22 +146,42 @@ v-app
 export default {
    data: function(){
        return{
-           result: "0" 
+           result: "0",
+           first: null,
+           second: null
        };
    },
 
    methods: {
+       
        //number button clicking
        numberClick: function(n) {
 
            if( this.result === "0" || this.result === null ){
-               this.result = "" + n;
+               if ( n === "0" ){
+                   
+               }
+               else{
+                  this.result = "" + n;
+               }
            }
            else{
               this.result = this.result + "" +  n;
            }
 
        },
+       //operations 
+       operations: function(m) {
+
+           if (m === "x"){
+               this.first = parseInt(this.result);
+               this.result = null;
+           }
+           if (m === "="){
+               this.result = this.first * parseInt(this.result);
+           }
+       },
+
   }
 }
 </script>
