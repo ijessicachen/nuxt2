@@ -13,6 +13,7 @@ v-app
                     filled
                     clearable
                     v-model = "result"
+                    label = "result"
                 ) 
             tr
               td( 
@@ -106,6 +107,7 @@ v-app
                   fab
                   color = "deep-purple darken-4"
                   outlined
+                  @click = "numberClick('<-')"
                 )
                     v-icon mdi-arrow-left-bold
               td 
@@ -156,19 +158,25 @@ export default {
        };
    },
 
+   computed: {
+
+   },
+
    methods: {
        
        //number button clicking
        numberClick: function(n) {
 
            if( this.result === "0" || this.result === null ){
-               if ( n === "0" ){
+               if ( n === "0" || n === "<-" ){
                    
                }
                else{
                   this.result = "" + n;
                }
            }
+           //else if( n === "<-"){
+               //this.result = this.result
            else{
               this.result = this.result + "" +  n;
            }
