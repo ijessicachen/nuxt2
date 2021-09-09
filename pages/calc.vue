@@ -55,6 +55,7 @@ v-app
                  large
                  fab
                  color = "red lighten-1"
+                 @click = "operations('-')"
                 ) 
                     v-icon mdi-minus
             tr
@@ -76,6 +77,7 @@ v-app
                  large
                  fab
                  color = "red lighten-1"
+                 @click = "operations('+')"
                 ) 
                     v-icon mdi-plus
             tr
@@ -111,6 +113,7 @@ v-app
                  large
                  fab
                  color = "red lighten-1"
+                 @click = "operations('/')"
                 ) 
                     v-icon mdi-slash-forward
             tr
@@ -148,7 +151,8 @@ export default {
        return{
            result: "0",
            first: null,
-           second: null
+           second: null,
+           op: null
        };
    },
 
@@ -173,13 +177,26 @@ export default {
        //operations 
        operations: function(m) {
 
-           if (m === "x"){
+           if (m === "="){
+               if (this.op === "x"){
+                  this.result = this.first * parseInt(this.result);
+               }
+               if (this.op === "-"){
+                  this.result = this.first - parseInt(this.result);
+               }
+               if (this.op === "+"){
+                  this.result = this.first + parseInt(this.result);
+               }
+               if (this.op === "/"){
+                  this.result = this.first / parseInt(this.result);
+               }
+           }
+           else{
                this.first = parseInt(this.result);
                this.result = null;
+               this.op = m;
            }
-           if (m === "="){
-               this.result = this.first * parseInt(this.result);
-           }
+
        },
 
   }
