@@ -97,6 +97,7 @@ v-app
                  large
                  fab
                  color = "deep-purple darken-4"
+                 @click = "numberClick('.')"
                 )
                     v-icon(
                         color = "grey lighten-5"
@@ -155,7 +156,8 @@ export default {
            result: "0",
            first: null,
            second: null,
-           op: null
+           op: null,
+           places: 0
        };
    },
 
@@ -168,16 +170,28 @@ export default {
        //number button clicking
        numberClick: function(n) {
 
+           if( this.first == this.result){
+               this.result == null;
+           }
+
            if( this.result === "0" || this.result === null ){
                if ( n === "0" || n === "<-" ){
                    
+               }
+               else if ( n === "." ){
+                  this.result = "0.";
                }
                else{
                   this.result = "" + n;
                }
            }
            else if( n === "<-"){
-               this.result = Math.trunc(this.result / 10); 
+               if (this.places === 0){
+                  this.result = Math.trunc(this.result / 10); 
+               }
+               else {
+                  this.result = Math.trunc(this.result * 10^this.places * 10 / 10)// / (10 ^ (this.places - 1));
+               }
            }
            else{
               this.result = this.result + "" +  n;
@@ -187,25 +201,29 @@ export default {
        //operations 
        operations: function(m) {
 
-           if (m === "="){
-               if (this.op === "x"){
-                  this.result = this.first * parseInt(this.result);
-               }
-               if (this.op === "-"){
-                  this.result = this.first - parseInt(this.result);
-               }
-               if (this.op === "+"){
-                  this.result = this.first + parseInt(this.result);
-               }
-               if (this.op === "/"){
-                  this.result = this.first / parseInt(this.result);
-               }
+           this.first = parseInt(this.result);
+
+           if ( m === "x"){
+              this.first = this.first * parseInt(this.first);
            }
-           else{
-               this.first = parseInt(this.result);
-               this.result = null;
-               this.op = m;
+           else if( m === "-"){
+              this.first = this.first - parseInt(this.first);
            }
+           else if ( m === "+"){
+              this.first = this.first + parseInt(this.first);
+           }
+           else if ( m === "/"){
+              this.first = this.first / parseInt(this.first);
+           }
+           else if (this.op === "="){
+              this.result = this.first;
+           }
+
+           //else{
+           //    this.first = parseInt(this.result);
+           //    this.result = null;
+           //    this.op = m;
+           //}
 
        },
 
