@@ -120,13 +120,13 @@ v-app
                 ) 
                     v-icon mdi-slash-forward
             tr
-              //td
-              //  v-btn(
-              //    large
-              //    color = "green accent-4"
-              //    fab
-              //  )
-              //      v-icon mdi-plus-minus-variant 
+              td
+                v-btn(
+                  large
+                  color = "green accent-4"
+                  fab
+                )
+                    v-icon mdi-plus-minus-variant 
               //td
               //  v-btn(
               //    large
