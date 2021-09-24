@@ -147,6 +147,7 @@ v-app
                     
           
 </template>
+
 <script>
 export default {
    data: function(){
@@ -175,8 +176,9 @@ export default {
                   this.result = "" + n;
                }
            }
-           //else if( n === "<-"){
-               //this.result = this.result
+           else if( n === "<-"){
+               this.result = Math.trunc(this.result / 10); 
+           }
            else{
               this.result = this.result + "" +  n;
            }
