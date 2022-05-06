@@ -1,2 +1,2 @@
 # nuxt2
-see how much I actually learned!
+Featuring a very bad calculator and a very big button
