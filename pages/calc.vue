@@ -1,12 +1,14 @@
 <template lang="pug">
 
 v-app
+    // calculator graphics
     v-card(
         class = "mx-auto"
         max-width = "500"
         outlined
     )
         table
+            // textfield to type in 
             tr
               th(colspan = "4")
                 v-text-field(
@@ -15,6 +17,7 @@ v-app
                     v-model = "result"
                     label = "result"
                 ) 
+            // number rows
             tr
               td( 
                 v-for = "n in [7, 8, 9]"
@@ -119,15 +122,29 @@ v-app
                  @click = "operations('/')"
                 ) 
                     v-icon mdi-slash-forward
+            // last row (+- and =)
             tr
               td
                 v-btn(
                   large
                   color = "green accent-4"
                   fab
+                  @click = "numberClick('f')"
                 )
                     v-icon mdi-plus-minus-variant 
-              //td
+              
+              th(colspan = "4")
+                v-btn(
+                 large 
+                 v-bind:color = "r1"
+                 block
+                 @click = "operations('=')"
+                ) 
+                    v-icon(
+                       large
+                    ) mdi-equal
+            //maybe make a new number pad for further operations
+            //td
               //  v-btn(
               //    large
               //    fab
@@ -135,27 +152,19 @@ v-app
               //  )
               //      v-icon mdi-exponent
               //td
-              th(colspan = "4")
-                v-btn(
-                 large 
-                 color = "red lighten-1"
-                 block
-                 @click = "operations('=')"
-                ) 
-                    v-icon(
-                       large
-                    ) mdi-equal
+
                     
           
 </template>
 
 <script>
 export default {
+   // variables
    data: function(){
        return{
+           r1: "blue",//"red lighten-1",
            result: "0",
-           first: null,
-           second: null,
+           hold: [],
            op: null,
            places: 0
        };
@@ -165,6 +174,11 @@ export default {
 
    },
 
+   /**
+    * TO DO
+    *    find a way to severely limit what you can type in the
+    *    text box or just not allow typing at all.
+    */
    methods: {
        
        //number button clicking
@@ -193,30 +207,36 @@ export default {
                   this.result = Math.trunc(this.result * 10^this.places * 10 / 10)// / (10 ^ (this.places - 1));
                }
            }
+           else if(n === "f"){
+               this.result *= -1;
+           }
            else{
               this.result = this.result + "" +  n;
            }
 
        },
        //operations 
+       // redoing them so the operations can stack into an array
        operations: function(m) {
 
-           this.first = parseInt(this.result);
-
            if ( m === "x"){
-              this.first = this.first * parseInt(this.first);
+               this.hold.push(this.result + "x");
            }
            else if( m === "-"){
-              this.first = this.first - parseInt(this.first);
+               this.hold.push(this.result + "-");
            }
            else if ( m === "+"){
-              this.first = this.first + parseInt(this.first);
+               this.hold.push(this.result + "+");
            }
            else if ( m === "/"){
-              this.first = this.first / parseInt(this.first);
+               this.hold.push(this.result + "/");
            }
-           else if (this.op === "="){
+           this.result = null;
+
+           if (this.op === "="){
               this.result = this.first;
+              console.log(this.hold);
+              this.hold = [];
            }
 
            //else{
