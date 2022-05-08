@@ -1,2 +1,2 @@
 # nuxt2
-Featuring a very bad calculator and a very big button
+Featuring an interesting calculator and a 4 big buttons
