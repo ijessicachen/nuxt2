@@ -1,17 +1,26 @@
 <template lang="pug">
     v-app
-        h1  HELLO WORLD 2 
-        h4  ____________________ 
+        h1  HELLO 
+        h3  ____________________ 
         ul
-            li  heehee
+            li I'm Jessica 
+            li Here are my notable projects:
         
-        //try the button component.
+        //buttons to other pages
         v-btn(
-          depressed
-          color = "primary"
-        ) • 
+            block
+          color = "indigo accent-1"
+        ) calculator (in progress) 
         v-btn(
-          color = "primary"
+          color = "blue"
           block
-        ) 0
+        ) minesweeper
+        v-btn(
+          block
+          color = "cyan"
+        ) snake (in progress)
+        v-btn(
+          block
+          color = "teal accent-3"
+        ) fire alarm website
 </template>
