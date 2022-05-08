@@ -15,7 +15,7 @@ v-app
                     filled
                     clearable
                     v-model = "result"
-                    label = "result"
+                    v-bind:label = "first"
                 ) 
             // number rows
             tr
@@ -36,7 +36,7 @@ v-app
                 v-btn(
                  large
                  fab
-                 color = "red lighten-1"
+                 v-bind:color = "r1.at(0)"
                  @click = "operations('x')"
                 ) 
                     v-icon mdi-close
@@ -58,7 +58,7 @@ v-app
                 v-btn(
                  large
                  fab
-                 color = "red lighten-1"
+                 v-bind:color = "r1.at(1)"
                  @click = "operations('-')"
                 ) 
                     v-icon mdi-minus
@@ -80,7 +80,7 @@ v-app
                 v-btn(
                  large
                  fab
-                 color = "red lighten-1"
+                 v-bind:color = "r1.at(2)"
                  @click = "operations('+')"
                 ) 
                     v-icon mdi-plus
@@ -118,7 +118,7 @@ v-app
                 v-btn(
                  large
                  fab
-                 color = "red lighten-1"
+                 v-bind:color = "r1.at(3)"
                  @click = "operations('/')"
                 ) 
                     v-icon mdi-slash-forward
@@ -136,7 +136,7 @@ v-app
               th(colspan = "4")
                 v-btn(
                  large 
-                 v-bind:color = "r1"
+                 color = "red lighten-1"
                  block
                  @click = "operations('=')"
                 ) 
@@ -162,8 +162,9 @@ export default {
    // variables
    data: function(){
        return{
-           r1: "blue",//"red lighten-1",
+           r1: ["red lighten-1", "red lighten-1", "red lighten-1", "red lighten-1"],
            result: "0",
+           first: "result",
            hold: [],
            op: null,
            places: 0
@@ -184,13 +185,16 @@ export default {
        //number button clicking
        numberClick: function(n) {
 
+           // wait what is this???
            if( this.first == this.result){
                this.result == null;
            }
 
+           // make sure consecutive zeros don't happen and . will turn into
+           // 0.
            if( this.result === "0" || this.result === null ){
-               if ( n === "0" || n === "<-" ){
-                   
+               if ( n === "0" || n === "<-" || n === "f"){
+
                }
                else if ( n === "." ){
                   this.result = "0.";
@@ -218,35 +222,62 @@ export default {
        //operations 
        // redoing them so the operations can stack into an array
        operations: function(m) {
+           this.r1 = ["red lighten-1", "red lighten-1", "red lighten-1", "red lighten-1"]
+
+           // do something here to calculate the previous 
+           // components of hold so like ideally there should be
+           // max two elements in hold
+           /*
+           let check = hold;
+           while (true){
+               if (this.check.length === 2 && (this.check.at(1).isArray() && this.check.at(1).at(length-1).charAt(length-1) != ')')){
+                   this.check = this.check.at(1);
+               } else if (this.check.length === 2){
+                   var one = this.check.at(0).substring(0, this.check.at(0).length-2);
+                   var op = this.check.at(0).charAt(this.check.at(0).length-1);
+                   var o = this.op.charCodeAt(0);
+                   switch(o){
+                       case 43:
+                           break;
+                       case 45:
+                           break;
+                       case 47:
+                           break;
+                       default: //multiplication
+                   };
+               }
+           }
+           */
 
            if ( m === "x"){
                this.hold.push(this.result + "x");
+               this.r1.splice(0, 1, "pink lighten-2");
            }
            else if( m === "-"){
                this.hold.push(this.result + "-");
+               this.r1.splice(1, 1, "pink lighten-2");
            }
            else if ( m === "+"){
                this.hold.push(this.result + "+");
+               this.r1.splice(2, 1, "pink lighten-2");
            }
            else if ( m === "/"){
                this.hold.push(this.result + "/");
+               this.r1.splice(3, 1, "pink lighten-2");
            }
-           this.result = null;
-
+           
            if (this.op === "="){
-              this.result = this.first;
-              console.log(this.hold);
+               //this.result = this.hold.at(0); // pretty sure this is just testing if it works
+               //console.log(this.hold);
+               this.result = null;
+               this.first = this.result;
               this.hold = [];
+           }else{
+               //this.first = this.hold.at(0).substring(0, this.hold.at(0).length-1); //you will have to change this for brackets
+               this.first = this.result //for now until I can figure the hold one out
+               this.result = null;
            }
-
-           //else{
-           //    this.first = parseInt(this.result);
-           //    this.result = null;
-           //    this.op = m;
-           //}
-
-       },
-
-  }
+       }
+   }
 }
 </script>
