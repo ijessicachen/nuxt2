@@ -1,8 +1,21 @@
 <template lang="pug">
 
 v-app
+    v-btn(
+        depressed
+        icon
+        small
+        to = "/"
+    ) 
+        v-icon(
+            color = "green accent-4"
+            ) {{ "mdi-home" }}
+    h2 Calculator 
+    ul
+        li Incomplete, but, numbers, backspace, and +/- work
+        li Goal is a functioning calculator with at least basic 4 ops 
     // calculator graphics
-    v-card(
+    v-card.my-8(
         class = "mx-auto"
         max-width = "500"
         outlined
@@ -152,8 +165,6 @@ v-app
               //  )
               //      v-icon mdi-exponent
               //td
-
-                    
           
 </template>
 

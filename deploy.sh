@@ -2,6 +2,7 @@
 
 # bash script
 
+echo "enter a comment: "
 read comment
 
 dev="/Users/jessicachen/nuxt2"
