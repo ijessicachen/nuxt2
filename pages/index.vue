@@ -26,5 +26,10 @@
           color = "teal accent-4"
           href = "/legacy/IT2_Stem_Club/Smoke_Detector.html"
         ) fire alarm website
+        v-btn.white--text(
+            block
+            color = "black"
+            to = "/test"
+        ) new test home page
 </template>
 

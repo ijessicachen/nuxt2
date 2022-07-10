@@ -173,6 +173,7 @@ export default {
    // variables
    data: function(){
        return{
+           // should probably do the google operation thing with this
            r1: ["red lighten-1", "red lighten-1", "red lighten-1", "red lighten-1"],
            result: "0",
            first: "result",
@@ -188,8 +189,9 @@ export default {
 
    /**
     * TO DO
-    *    find a way to severely limit what you can type in the
+    *    • find a way to severely limit what you can type in the
     *    text box or just not allow typing at all.
+    *    • you need a clear button
     */
    methods: {
        
@@ -214,6 +216,7 @@ export default {
                   this.result = "" + n;
                }
            }
+           // pretty sure this is del or backspace
            else if( n === "<-"){
                if (this.places === 0){
                   this.result = Math.trunc(this.result / 10); 
@@ -222,9 +225,15 @@ export default {
                   this.result = Math.trunc(this.result * 10^this.places * 10 / 10)// / (10 ^ (this.places - 1));
                }
            }
+           // +/-
            else if(n === "f"){
                this.result *= -1;
            }
+           /*
+              I think right now I'm trying to create a longass string to
+              account for brackets but I think I should be able to calculate
+              it until there is a bracket
+           */
            else{
               this.result = this.result + "" +  n;
            }
