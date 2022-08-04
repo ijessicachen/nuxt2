@@ -40,3 +40,8 @@ npm -version
 nvm -version
 ```
 
+Error: error:0308010C:digital envelope routines::unsupported
+```bash
+node --version
+nvm install 16.16.0
+```

@@ -14,6 +14,6 @@
            li made with python curses, the complete game
        iframe(
            height = "700px" width="100%"
-           src = "https://replit.com/@egg678/LearnCodingInPython?lite=true&outputonly=1"
+           src = "https://replit.com/@egg678/LearnCodingInPython?embed=true"
            )
 </template>

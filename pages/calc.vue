@@ -173,12 +173,11 @@ export default {
    // variables
    data: function(){
        return{
-           // should probably do the google operation thing with this
-           r1: ["red lighten-1", "red lighten-1", "red lighten-1", "red lighten-1"],
+           r1: ["red lighten-1", "red lighten-1", "red lighten-1", "red lighten-1"], // google operation thing
            result: "0",
            first: "result",
-           hold: [],
-           op: null,
+           hold: [], // pretty sure whole equation will end up here
+           op: null, // operation
            places: 0
        };
    },
@@ -216,12 +215,12 @@ export default {
                   this.result = "" + n;
                }
            }
-           // pretty sure this is del or backspace
+           // del or backspace
            else if( n === "<-"){
                if (this.places === 0){
                   this.result = Math.trunc(this.result / 10); 
                }
-               else {
+               else { //this should work with brackets but it's not like I've had the chance to try it yet
                   this.result = Math.trunc(this.result * 10^this.places * 10 / 10)// / (10 ^ (this.places - 1));
                }
            }
@@ -234,8 +233,12 @@ export default {
               account for brackets but I think I should be able to calculate
               it until there is a bracket
            */
+           // the structure is supposed to account for brackets rn but there
+           // aren't actually any brackets implemented
+           // DO NOT USE BRACKETS YET WHEN TESTING
            else{
-              this.result = this.result + "" +  n;
+               this.result = this.result + "" +  n;
+               this.hold.push(this.op + n); // add the number to the end of the string
            }
 
        },
@@ -270,19 +273,20 @@ export default {
            */
 
            if ( m === "x"){
-               this.hold.push(this.result + "x");
+               this.op = "x";
+               // this.hold.push(this.result + "x");
                this.r1.splice(0, 1, "pink lighten-2");
            }
            else if( m === "-"){
-               this.hold.push(this.result + "-");
+               this.op = "-";
                this.r1.splice(1, 1, "pink lighten-2");
            }
            else if ( m === "+"){
-               this.hold.push(this.result + "+");
+               this.op = "+";
                this.r1.splice(2, 1, "pink lighten-2");
            }
            else if ( m === "/"){
-               this.hold.push(this.result + "/");
+               this.op = "/";
                this.r1.splice(3, 1, "pink lighten-2");
            }
            
