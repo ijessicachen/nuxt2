@@ -2,7 +2,7 @@
 Sadly the calculator still sucks
 Full format revamp coming soon!
 
-#NOTES
+# NOTES
 ## run on local
 ```bash
 npm run dev
