@@ -1,5 +1,5 @@
 # nuxt2
-Sadly the calculator still sucks
+Sadly the calculator still sucks <br>
 Full format revamp coming soon!
 
 # NOTES
