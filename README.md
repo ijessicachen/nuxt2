@@ -1,12 +1,14 @@
 # nuxt2
-Featuring an interesting calculator and a 4 big buttons
+Sadly the calculator still sucks <br>
+Full format revamp coming soon!
 
-# run on local
+# NOTES
+## run on local
 ```bash
 npm run dev
 ```
 
-# deploy memo
+## deploy memo
 
 figure out where you are and change to the correct place
 
