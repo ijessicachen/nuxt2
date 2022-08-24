@@ -12,6 +12,11 @@
           to = "/calc"
         ) calculator (in progress) 
         v-btn.white--text(
+          block
+          color = "blue accent-2"
+          to = "/tetris"
+        ) tetris (in progress)
+        v-btn.white--text(
           color = "blue"
           block
           to = "/mines"
