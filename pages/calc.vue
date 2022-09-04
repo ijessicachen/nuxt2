@@ -1,4 +1,9 @@
 <template lang="pug">
+// TO DO
+// • eventually a sort of "powering up" animation
+// • 4 basic operations
+// • exponents and roots (for the value that is shown)
+// • brackets ;-;
 
 v-app
     v-btn(
@@ -22,11 +27,14 @@ v-app
     )
         table
             // textfield to type in 
+            //blocking typing in it since I don't want to deal with that
+            //yet so I'll just remove the option
             tr
               th(colspan = "4")
                 v-text-field(
                     filled
                     clearable
+                    readonly 
                     v-model = "result"
                     v-bind:label = "first"
                 ) 
@@ -188,8 +196,6 @@ export default {
 
    /**
     * TO DO
-    *    • find a way to severely limit what you can type in the
-    *    text box or just not allow typing at all.
     *    • you need a clear button
     */
    methods: {
@@ -197,10 +203,12 @@ export default {
        //number button clicking
        numberClick: function(n) {
 
-           // wait what is this???
+           // idk what this is
+           /*
            if( this.first == this.result){
                this.result == null;
            }
+           */
 
            // make sure consecutive zeros don't happen and . will turn into
            // 0.
@@ -229,23 +237,78 @@ export default {
                this.result *= -1;
            }
            /*
-              I think right now I'm trying to create a longass string to
+              I think right now I'm trying to create a long string to
               account for brackets but I think I should be able to calculate
               it until there is a bracket
            */
            // the structure is supposed to account for brackets rn but there
            // aren't actually any brackets implemented
            // DO NOT USE BRACKETS YET WHEN TESTING
+           /*
+              Okay so FORGET about the string (for now?) and just 
+              calculate as you go.
+              Yes this is basically reverting to the first version
+              of the calculator but shhh
+           */
            else{
-               this.result = this.result + "" +  n;
-               this.hold.push(this.op + n); // add the number to the end of the string
+               // WAIT THIS IS THE WRONG PLACE TO PUT THE OPERATION ACTIONS, THIS 
+               //ACTS AFTER THE SECOND NUMBER AFTER THE OP IS PRESSED, SO FIX THAT
+               this.first = this.result;
+               switch (this.op){
+                   case 'x':
+                       this.result = "" + "hello";//parseInt(this.result)*n;
+                       break;
+                   case '-':
+                       break;
+                   case '+':
+                       break;
+                   case '/':
+                       break;
+                   default:
+                       this.result = this.op;//this.result + "" +  n; // why it "lagging"?
+                       //this.hold.push(this.op + n); // add the number to the end of the string
+                       break;
+               }
+               this.op = null;
            }
 
        },
        //operations 
        // redoing them so the operations can stack into an array
+       // WAIT YOU CAN PROBABLY JUST MAKE RECURSIVE FOR BRACKETS SO SCREW THE ARRAY (for now?)
+       // yet another redo 
        operations: function(m) {
            this.r1 = ["red lighten-1", "red lighten-1", "red lighten-1", "red lighten-1"]
+
+           if ( m === "x"){
+               this.op = "x";
+               // this.hold.push(this.result + "x");
+               this.r1.splice(0, 1, "pink lighten-2");
+           }
+           else if( m === "-"){
+               this.op = "-";
+               this.r1.splice(1, 1, "pink lighten-2");
+           }
+           else if ( m === "+"){
+               this.op = "+";
+               this.r1.splice(2, 1, "pink lighten-2");
+           }
+           else if ( m === "/"){
+               this.op = "/";
+               this.r1.splice(3, 1, "pink lighten-2");
+           }
+           
+           if (this.op === "="){
+               //this.result = this.hold.at(0); // pretty sure this is just testing if it works
+               //console.log(this.hold);
+               this.first = null;
+              //this.hold = [];
+           }else{
+               //this.first = this.hold.at(0).substring(0, this.hold.at(0).length-1); //you will have to change this for brackets
+               this.first = this.result //for now until I can figure the hold one out
+               this.result = null;
+           }
+
 
            // do something here to calculate the previous 
            // components of hold so like ideally there should be
@@ -272,35 +335,6 @@ export default {
            }
            */
 
-           if ( m === "x"){
-               this.op = "x";
-               // this.hold.push(this.result + "x");
-               this.r1.splice(0, 1, "pink lighten-2");
-           }
-           else if( m === "-"){
-               this.op = "-";
-               this.r1.splice(1, 1, "pink lighten-2");
-           }
-           else if ( m === "+"){
-               this.op = "+";
-               this.r1.splice(2, 1, "pink lighten-2");
-           }
-           else if ( m === "/"){
-               this.op = "/";
-               this.r1.splice(3, 1, "pink lighten-2");
-           }
-           
-           if (this.op === "="){
-               //this.result = this.hold.at(0); // pretty sure this is just testing if it works
-               //console.log(this.hold);
-               this.result = null;
-               this.first = this.result;
-              this.hold = [];
-           }else{
-               //this.first = this.hold.at(0).substring(0, this.hold.at(0).length-1); //you will have to change this for brackets
-               this.first = this.result //for now until I can figure the hold one out
-               this.result = null;
-           }
        }
    }
 }
