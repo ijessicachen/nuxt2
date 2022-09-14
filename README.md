@@ -47,3 +47,17 @@ Error: error:0308010C:digital envelope routines::unsupported
 node --version
 nvm install 16.16.0
 ```
+
+## moving files
+
+```bash
+#check if destination right and find location of file
+ls -la ~/nuxt2
+ls -la ~/Downloads/*.png
+-rw-r--r--@ 1 jessicachen  staff      7129 24 Jul 11:02 /Users/jessicachen/Downloads/
+
+# source then destination
+cp -v ~/Downloads/headshot\ copy.png ~/nuxt2/assets/testhead.png
+cp -v ~/Downloads/NicePng_white-arrow-png_81725.png ~/nuxt2/assets/testhead.png
+
+```
