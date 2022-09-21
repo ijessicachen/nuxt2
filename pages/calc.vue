@@ -210,6 +210,7 @@ export default {
            }
            */
 
+           // IGNORE THIS FOR NOW TO MAKE OPERATIONS WORK
            // make sure consecutive zeros don't happen and . will turn into
            // 0.
            if( this.result === "0" || this.result === null ){
@@ -236,6 +237,7 @@ export default {
            else if(n === "f"){
                this.result *= -1;
            }
+
            /*
               I think right now I'm trying to create a long string to
               account for brackets but I think I should be able to calculate
@@ -251,25 +253,8 @@ export default {
               of the calculator but shhh
            */
            else{
-               // WAIT THIS IS THE WRONG PLACE TO PUT THE OPERATION ACTIONS, THIS 
-               //ACTS AFTER THE SECOND NUMBER AFTER THE OP IS PRESSED, SO FIX THAT
                this.first = this.result;
-               switch (this.op){
-                   case 'x':
-                       this.result = "" + "hello";//parseInt(this.result)*n;
-                       break;
-                   case '-':
-                       break;
-                   case '+':
-                       break;
-                   case '/':
-                       break;
-                   default:
-                       this.result = this.op;//this.result + "" +  n; // why it "lagging"?
-                       //this.hold.push(this.op + n); // add the number to the end of the string
-                       break;
-               }
-               this.op = null;
+               // acdtauly you may eventually need ot also put an operations clause here
            }
 
        },
@@ -298,11 +283,30 @@ export default {
                this.r1.splice(3, 1, "pink lighten-2");
            }
            
-           if (this.op === "="){
+           if (m === "="){
                //this.result = this.hold.at(0); // pretty sure this is just testing if it works
                //console.log(this.hold);
-               this.first = null;
-              //this.hold = [];
+               switch (this.op){
+                    case 'x':
+                        this.result = parseInt(this.result)*this.first;
+                        break;
+                    case '-':
+                        this.result = parseInt(this.result)-this.first;
+                        break;
+                    case '+':
+                        this.result = parseInt(this.result)+parseInt(this.first);
+                        break;
+                    case '/':
+                        this.result = parseInt(this.result)/parseInt(this.first);
+                        break;
+                    default:
+                        this.result = "wrong";//this.op;//this.result + "" +  n; // why it "lagging"?
+                        //this.hold.push(this.op + n); // add the number to the end of the string
+                        break;
+                }
+                this.first = null;
+                this.op = null;
+                this.hold = [];
            }else{
                //this.first = this.hold.at(0).substring(0, this.hold.at(0).length-1); //you will have to change this for brackets
                this.first = this.result //for now until I can figure the hold one out
