@@ -1,5 +1,5 @@
 <template lang="pug">
-    v-app
+   v-app
         h1 HELLO 
         ul
             li I'm Jessica 
@@ -37,4 +37,8 @@
             to = "/test"
         ) new test home page
 </template>
-
+<script>
+export default{
+//    layout: "default"
+}
+</script>

@@ -1,14 +1,5 @@
 <template lang="pug">
    v-app
-       v-btn(
-           depressed
-           icon
-           small
-           to = "/"
-       ) 
-           v-icon(
-               color = "green accent-4"
-               ) {{ "mdi-home" }}
        h2 Snake
        ul
            li moves, eats fruit, can die, can replay

@@ -1,12 +1,26 @@
 # nuxt2
 Sadly the calculator still sucks <br>
 Full format revamp coming soon!
+<br><br>
+start the journal
+```bash
+ls -la ~/nuxt2
+mkdir ~/nuxt2/journal
+```
 
 # NOTES
 ## run on local
 ```bash
 npm run dev
 ```
+
+## byobu
+```bash
+#check if already have package
+brew search byobu
+brew install byobu
+```
+
 
 ## deploy memo
 

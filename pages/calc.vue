@@ -1,20 +1,15 @@
 <template lang="pug">
 // TO DO
+
+// • calculate without pressing equals sign, so basically when the 
+//   second number is pressed
+
 // • eventually a sort of "powering up" animation
 // • 4 basic operations
 // • exponents and roots (for the value that is shown)
 // • brackets ;-;
 
 v-app
-    v-btn(
-        depressed
-        icon
-        small
-        to = "/"
-    ) 
-        v-icon(
-            color = "green accent-4"
-            ) {{ "mdi-home" }}
     h2 Calculator 
     ul
         li Incomplete, but, numbers, backspace, and +/- work
