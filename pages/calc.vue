@@ -1,9 +1,8 @@
 <template lang="pug">
 // TO DO
 
-// • calculate without pressing equals sign, so basically when the 
-//   second number is pressed
-
+// • substitute the x cancel button for a clear button
+//      • this way I can make it more specific?
 // • eventually a sort of "powering up" animation
 // • 4 basic operations
 // • exponents and roots (for the value that is shown)
@@ -12,8 +11,8 @@
 v-app
     h2 Calculator 
     ul
-        li Incomplete, but, numbers, backspace, and +/- work
         li Goal is a functioning calculator with at least basic 4 ops 
+        li 4 basic ops work, adding brackets, more complicated operations, and more!
     // calculator graphics
     v-card.my-8(
         class = "mx-auto"
@@ -28,11 +27,20 @@ v-app
               th(colspan = "4")
                 v-text-field(
                     filled
-                    clearable
                     readonly 
                     v-model = "result"
                     v-bind:label = "first"
                 ) 
+            // clear button
+            tr
+              th(colspan = "4")
+                 v-btn(
+                   medium
+                   block 
+                   color = "deep-purple darken-4"
+                   outlined
+                   @click = "operations(' ')"
+                 ) clear
             // number rows
             tr
               td( 
@@ -178,7 +186,7 @@ export default {
        return{
            r1: ["red lighten-1", "red lighten-1", "red lighten-1", "red lighten-1"], // google operation thing
            result: "0",
-           first: "result",
+           first: null,
            hold: [], // pretty sure whole equation will end up here
            op: null, // operation
            places: 0
@@ -205,22 +213,9 @@ export default {
            }
            */
 
-           // IGNORE THIS FOR NOW TO MAKE OPERATIONS WORK
-           // make sure consecutive zeros don't happen and . will turn into
-           // 0.
-           if( this.result === "0" || this.result === null ){
-               if ( n === "0" || n === "<-" || n === "f"){
-
-               }
-               else if ( n === "." ){
-                  this.result = "0.";
-               }
-               else{
-                  this.result = "" + n;
-               }
-           }
+           
            // del or backspace
-           else if( n === "<-"){
+           if( n === "<-"){
                if (this.places === 0){
                   this.result = Math.trunc(this.result / 10); 
                }
@@ -231,6 +226,24 @@ export default {
            // +/-
            else if(n === "f"){
                this.result *= -1;
+           }
+           // normal numbers
+           else{
+               // make sure consecutive zeros don't happen and . will turn into
+               // 0.
+               if( this.result === "0" || this.result === null ){
+                   if ( n === "0" || n === "<-" || n === "f"){
+
+                   }
+                   else if ( n === "." ){
+                      this.result = "0.";
+                   }
+                   else{
+                      this.result = "" + n;
+                   }
+               } else{
+                   this.result = this.result + "" + n;
+               }
            }
 
            /*
@@ -247,10 +260,12 @@ export default {
               Yes this is basically reverting to the first version
               of the calculator but shhh
            */
+           /*
            else{
                this.first = this.result;
                // acdtauly you may eventually need ot also put an operations clause here
            }
+           */
 
        },
        //operations 
@@ -260,8 +275,70 @@ export default {
        operations: function(m) {
            this.r1 = ["red lighten-1", "red lighten-1", "red lighten-1", "red lighten-1"]
 
+           if (m === " "){
+               this.first = null;
+               this.result = null;
+           }
+           else if (m === "="){
+               //this.result = this.hold.at(0); // pretty sure this is just testing if it works
+               //console.log(this.hold);
+               switch (this.op){
+                    case 'x':
+                        this.result = parseInt(this.first) * parseInt(this.result);
+                        break;
+                    case '-':
+                        this.result = parseInt(this.first) - parseInt(this.result);
+                        break;
+                    case '+':
+                        this.result = parseInt(this.first) + parseInt(this.result);
+                        break;
+                    case '/':
+                        this.result = parseInt(this.first) / parseInt(this.result);
+                        break;
+                    default:
+                        this.result = 0;
+                        // or it's something I don't want to deal with.
+                        break;
+                }
+                this.first = null;
+                this.op = null;
+                this.hold = [];
+           }else{
+               //this.first = this.hold.at(0).substring(0, this.hold.at(0).length-1); //you will have to change this for brackets
+               if (this.first != null && this.result != null){
+                   switch (this.op){
+                        case 'x':
+                           this.first = parseInt(this.first) * parseInt(this.result);
+                           break;
+                        case '-':
+                           this.first = parseInt(this.first) - parseInt(this.result);
+                           break;
+                        case '+':
+                           this.first = parseInt(this.first) + parseInt(this.result);
+                           break;
+                        case '/':
+                           this.first = parseInt(this.first) / parseInt(this.result);
+                           break;
+                        default:
+                           this.result = "not there yet";
+                           break;
+                   }
+               }
+               else{
+                   this.first = this.result //for now until I can figure the hold one out
+               }
+               this.result = null;
+           }
+
+           // this comes after because I calulate the previous part first? 
+           //okay there's probably a smarter way to do this.
            if ( m === "x"){
                this.op = "x";
+               /*
+               if (this.first != null && this.result != null){
+                   this.first *= this.result
+               }
+               */
                // this.hold.push(this.result + "x");
                this.r1.splice(0, 1, "pink lighten-2");
            }
@@ -277,37 +354,6 @@ export default {
                this.op = "/";
                this.r1.splice(3, 1, "pink lighten-2");
            }
-           
-           if (m === "="){
-               //this.result = this.hold.at(0); // pretty sure this is just testing if it works
-               //console.log(this.hold);
-               switch (this.op){
-                    case 'x':
-                        this.result = parseInt(this.result)*this.first;
-                        break;
-                    case '-':
-                        this.result = parseInt(this.result)-this.first;
-                        break;
-                    case '+':
-                        this.result = parseInt(this.result)+parseInt(this.first);
-                        break;
-                    case '/':
-                        this.result = parseInt(this.result)/parseInt(this.first);
-                        break;
-                    default:
-                        this.result = "wrong";//this.op;//this.result + "" +  n; // why it "lagging"?
-                        //this.hold.push(this.op + n); // add the number to the end of the string
-                        break;
-                }
-                this.first = null;
-                this.op = null;
-                this.hold = [];
-           }else{
-               //this.first = this.hold.at(0).substring(0, this.hold.at(0).length-1); //you will have to change this for brackets
-               this.first = this.result //for now until I can figure the hold one out
-               this.result = null;
-           }
-
 
            // do something here to calculate the previous 
            // components of hold so like ideally there should be

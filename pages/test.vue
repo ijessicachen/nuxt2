@@ -1,16 +1,6 @@
 <template lang="pug">
 
     v-app
-        v-btn(
-            depressed
-            icon
-            small
-            to = "/"
-        ) 
-            v-icon(
-                color = "green accent-4"
-            ) {{ "mdi-home" }}
-
         v-dialog(
             v-model="dialog"
             fullscreen

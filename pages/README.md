@@ -21,3 +21,5 @@ e ~/nuxt2/layouts/default.vue
 ```
 
 - use the default layout
+
+you can use layout as a function sometimes!
