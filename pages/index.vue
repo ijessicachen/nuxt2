@@ -3,7 +3,8 @@
         h1 HELLO 
         ul
             li I'm Jessica 
-            li Here are my notable projects:
+            li Here are some things I'm experimenting with
+            li None are really "complete", but those tagged with (IN PROGRESS) do not yet function close enough to my actual goal for them.
         
         //buttons to other pages
         v-btn.mt-8.white--text(
@@ -25,7 +26,7 @@
           block
           color = "cyan"
           to = "/snake"
-        ) snake (in progress)
+        ) snake
         v-btn.white--text(
           block
           color = "teal accent-4"

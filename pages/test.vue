@@ -11,26 +11,31 @@
             )
                 v-btn(
                     small
+                    icon
+                    outlined
                     v-bind="attrs"
                     v-on="on"
-                ) Welcome! Click to begin
+                )
             v-card(
             )
                 v-btn(
+                    small
                     icon
+                    outlined
                     @click = "dialog = false"
-                )
-                    v-icon(
-                        color = "primary"
-                    ) {{ "mdi-close" }}
-                v-card(
-                    max-width="500"
+                    )
+                // plan to make themes now, one for each letter of my first name to switch there, and then my last name will be for… we're getting there
+                // hope to make it refresh back to this page, not the first page
+                v-btn(
+                    max-height = "200px"
                 )
                     // src="/assets/testhead.png"
+                    // see if @click for images is ia thing
                     v-img(
                         :src="require('@/assets/testhead.png')"
-                        height="200px"
+                        width = "10px"
                     )
+
             
 </template>
 

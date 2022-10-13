@@ -1,10 +1,8 @@
 <template lang="pug">
 // TO DO
 
-// • substitute the x cancel button for a clear button
-//      • this way I can make it more specific?
 // • eventually a sort of "powering up" animation
-// • 4 basic operations
+// • secondary buttons ("function" button)
 // • exponents and roots (for the value that is shown)
 // • brackets ;-;
 
