@@ -75,3 +75,9 @@ cp -v ~/Downloads/headshot\ copy.png ~/nuxt2/assets/testhead.png
 cp -v ~/Downloads/NicePng_white-arrow-png_81725.png ~/nuxt2/assets/testhead.png
 
 ```
+
+## Check what's changed with
+```vim
+G diff .
+G diff package.json
+```

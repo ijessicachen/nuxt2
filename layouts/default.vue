@@ -1,11 +1,12 @@
 <template lang="pug">
 
-v-app
+v-app.testcol
     Header
     Nuxt/
     Footer
 
 </template>
+
 <script>
 export default{
 
@@ -16,3 +17,9 @@ export default{
 
 }
 </script>
+
+<style>
+.testcol{
+    background-color: blue;
+}
+</style>
