@@ -81,3 +81,18 @@ cp -v ~/Downloads/NicePng_white-arrow-png_81725.png ~/nuxt2/assets/testhead.png
 G diff .
 G diff package.json
 ```
+
+
+# General things to help 
+
+##find my IP
+```bash
+ifconfig | grep 192
+```
+
+
+# General TO-DO
+- create a table of contents
+- get my tetris working
+- get my calculator working
+- make the home page pretty

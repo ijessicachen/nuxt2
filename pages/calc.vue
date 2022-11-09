@@ -197,13 +197,10 @@ v-app
                     ) mdi-equal
               td
                  // FIGURE OUT HOW YOU CAN CHANGE ELEMENTS OF A BUTTON
-                 v-btn( 
-                     large
-                     fab
-                     outlined
-                     color = "black"
-                 )
-                     v-icon mdi-arrow-up-bold-circle
+                 v-switch(
+                     color = "grey darken-4"
+                     )
+                 
 </template>
 
 <script>
