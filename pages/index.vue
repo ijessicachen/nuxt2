@@ -27,16 +27,29 @@
           color = "cyan"
           to = "/snake"
         ) snake
-        v-btn.white--text(
-          block
-          color = "teal accent-4"
-          href = "/legacy/IT2_Stem_Club/Smoke_Detector.html"
-        ) fire alarm website
+         //dunno why there's that huge white space below the buttons
+        v-row(
+            no-gutters
+        )
+            v-col(
+            )
+               v-btn.white--text(
+                   block
+                   color = "teal accent-4"
+                   href = "/legacy/IT2_Stem_Club/Smoke_Detector.html"
+               ) fire alarm website
+            v-col(
+            )
+               v-btn.white--text(
+                   block
+                   color = "teal accent-4"
+                   to = "/falarm2"
+               ) fire alarm website improved (in progress)
         v-btn.white--text(
             block
             color = "black"
             to = "/test"
-        ) new test home page
+        ) new test home page (in progress)
 </template>
 <script>
 export default{
