@@ -2,6 +2,7 @@
 
 v-app
    h2 website to be here, eventually
+   p
       ul
           li I want some cool effects
           li Also for it just to be smoother than the old one
@@ -9,12 +10,14 @@ v-app
 
    // sidebar
    v-navigation-drawer(
+       class = "mt-6"
        permanent
        expand-on-hover
-       src="https://dalebailey.com/wp-content/uploads/2012/02/black_swirls_background.jpg"
+       color = "black"
        )
        // these icons could be improved upon and also
        // text should be bigger
+       // lmao this doesn't even lead anywhere yet
        v-list(
            nav
            dense)
@@ -49,5 +52,14 @@ v-app
                     ) {{ "mdi-presentation-play" }}
                v-list-item-title() Demonstration
 
+   // content
+   v-main
+       h2 Arduino Smoke Detector
+
     
 </template>
+<script>
+   export default{
+       //
+   }
+</script>
