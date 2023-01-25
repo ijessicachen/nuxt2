@@ -1,7 +1,7 @@
 <template lang="pug">
 v-footer(
     id = "footer"
-    color = "indigo lighten-4"
+    color = "blue-grey lighten-2"
     )
       v-container
           v-row

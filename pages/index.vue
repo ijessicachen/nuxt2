@@ -1,10 +1,11 @@
 <template lang="pug">
-   v-app
-        h1 HELLO 
-        ul
-            li I'm Jessica 
-            li Here are some things I'm experimenting with
-            li None are really "complete", but those tagged with (IN PROGRESS) do not yet function close enough to my actual goal for them.
+    v-app
+        div( class = "mx-5" )
+            h1 HELLO 
+            ul
+                li I'm Jessica 
+                li Here are some things I'm experimenting with
+                li None are really "complete", but those tagged with (IN PROGRESS) do not yet function close enough to my actual goal for them.
         
         //buttons to other pages
         //  • now they're all in rows to make the height of each section equal
@@ -61,6 +62,14 @@
                 color = "black"
                 to = "/test"
             ) new test home page (in progress)
+        v-row( no-gutters )
+            v-btn(
+                height = "100%"
+                block
+                color = "white"
+                to = "/sandbox"
+            ) vuetify sandbox (in progress)
+
 </template>
 <script>
 export default{

@@ -2,9 +2,10 @@
 div
     v-app-bar(
         height = "50"
-        color = "indigo lighten-4"
+        color = "blue-grey lighten-2"
         )
        v-btn(
+           class = "ml-1"
            depressed
            icon
            small
@@ -29,13 +30,14 @@ div
 </template>
 <script>
 
-export default {
+export default{ // new Vuetify({
+
     // variables
     data: function(){
         return{
-            modes: ["deep-purple darken-3", "yellow accent-1"],
+            modes: ["deep-purple accent-4", "yellow accent-1"],
             buttons: ["mdi-moon-waning-crescent", "mdi-white-balance-sunny"],
-            state: 0
+            state: false
         };
     },
 
@@ -44,14 +46,23 @@ export default {
 
     methods:{
         ahmyeyes: function(b) {
-            if (state === 0){
-                state = 1;
+            if (state === false){
+                state = true;
             } else{
-                state = 0;
+                state = false;
             }
         }
-    }
-}
+    },
+
+    // theme?
+    /*
+      oops, looks liek I actually need to use
+      the "secondary", "primary", "accent", "error"
+      colours to make theme work well. Do that next I guess.
+    */
+    //theme: { dark: state }
+}//)
+
 
 // bro I'll deal with theme later, I have
 // code needed but I have no idea where 

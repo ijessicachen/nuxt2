@@ -4,13 +4,16 @@
 // • eventually a sort of "powering up" animation
 // • secondary buttons ("function" button)
 // • exponents and roots (for the value that is shown)
+//   squaring the number is all good already though!
 // • brackets ;-;
 
 v-app
-    h2 Calculator 
-    ul
-        li Goal is a functioning calculator with at least basic 4 ops 
-        li 4 basic ops work, adding brackets, more complicated operations, and more!
+    div( class = "mx-5 mt-2" )
+         h2 Calculator 
+         ul
+             li Goal is a functioning calculator with at least basic 4 ops 
+             li 4 basic ops work, adding brackets, more complicated operations, and more!
+             li numbers mostly work but decimals are kind of funky.
 
     // CALCULATOR GRAPHICS
     v-card.my-8(
@@ -198,6 +201,7 @@ v-app
               td
                  // FIGURE OUT HOW YOU CAN CHANGE ELEMENTS OF A BUTTON
                  v-switch(
+                     class = "ml-2"
                      color = "grey darken-4"
                      )
                  
@@ -260,7 +264,7 @@ export default {
                       this.result = "0.";
                    }
                    else{
-                      this.result = "" + n;
+                      this.result = n;
                    }
                } else{
                    this.result = this.result + "" + n;
