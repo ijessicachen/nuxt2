@@ -2,23 +2,29 @@
 Sadly the calculator still sucks <br>
 Full format revamp coming soon!
 <br><br>
-start the journal
-```bash
-ls -la ~/nuxt2
-mkdir ~/nuxt2/journal
-```
 
-# NOTES
+## General TO-DO
+- create a table of contents
+- get my tetris working
+- get my calculator working
+- make the home page pretty
+
 ## run on local
 ```bash
 npm run dev
 ```
 
-## byobu
+# NOTES
+
+## copy to local
+
+*using SQL link thing* <br>
+clone [ijessicachen/nuxt2](https://github.com/ijessicachen/nuxt2) to local
+clone [ijessicachen/ijessicachen.github.com](https://github.com/ijessicachen/ijessicachen.github.com) to local
+
 ```bash
-#check if already have package
-brew search byobu
-brew install byobu
+git clone git@github.com:ijessicachen/nuxt2.git
+git clone git@github.com:ijessicachen/ijessicachen.github.com.git
 ```
 
 
@@ -32,15 +38,6 @@ echo expand("%:p:h")
 ```
 ```bash
 cd ~
-```
-
-*using SQL link thing*
-clone [ijessicachen/nuxt2](https://github.com/ijessicachen/nuxt2) to local
-clone [ijessicachen/ijessicachen.github.com](https://github.com/ijessicachen/ijessicachen.github.com) to local
-
-```bash
-git clone git@github.com:ijessicachen/nuxt2.git
-git clone git@github.com:ijessicachen/ijessicachen.github.com.git
 ```
 
 test deploy
@@ -62,8 +59,27 @@ node --version
 nvm install 16.16.0
 ```
 
-## moving files
 
+# General things to help 
+
+find my IP
+```bash
+ifconfig | grep 192
+```
+start the journal
+```bash
+ls -la ~/nuxt2
+mkdir ~/nuxt2/journal
+```
+
+byobu
+```bash
+#check if already have package
+brew search byobu
+brew install byobu
+```
+
+moving files
 ```bash
 #check if destination right and find location of file
 ls -la ~/nuxt2
@@ -76,23 +92,11 @@ cp -v ~/Downloads/NicePng_white-arrow-png_81725.png ~/nuxt2/assets/testhead.png
 
 ```
 
-## Check what's changed with
+Check what's changed with
 ```vim
 G diff .
 G diff package.json
 ```
 
 
-# General things to help 
 
-##find my IP
-```bash
-ifconfig | grep 192
-```
-
-
-# General TO-DO
-- create a table of contents
-- get my tetris working
-- get my calculator working
-- make the home page pretty
