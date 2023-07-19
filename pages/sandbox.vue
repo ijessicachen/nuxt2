@@ -3,8 +3,6 @@
        div
            h2 Practice
            ul
-               li yes I realized I need to actually know the language if I want to use it
-               li will be a bunch of simple things to look cool and  make me feel productive
                li I don't know why it is doing that fading at the sides
        div( class = "my-2" )
           p cards & grid.
@@ -64,11 +62,15 @@
           v-row
               v-col
                   v-card(
-                      class = "pa-2"
+                      class = "pa-0"
                       ) 
                       v-img(
+                          cover
+                          height = "100"
+                          width = "360"
+                          src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                           )
-                          v-card-text seven. guess the photo will wait for another day.
+                      v-card-subtitle seven
               v-col
                   v-card(
                       class = "pa-2"
@@ -99,6 +101,24 @@
                                       @click="dialog = false"
                                       ) go back
 
+       div( class = "mt-4" )
+           v-btn start
+               v-tooltip(
+                   activator = "parent"
+                   location="start"
+                   ) tooltip
+           v-tooltip( text = "click!" )
+               template( v-slot:activator="{ props }" )
+                   v-btn(v-bind="props") Tooltip
+           p we're going to need to revisit tooltip
+
+       div( class = "mt-4" )
+           v-virtual-scroll(
+               :height="200"
+               :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']"
+               )
+               template(v-slot:default="{ item }") Item {{ item }}
+           p and virtual scroll
            
 </template>
 

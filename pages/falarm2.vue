@@ -9,53 +9,58 @@ v-app
               li Also for it just to be smoother than the old one
 
 
-   // sidebar
-   v-navigation-drawer(
-       class = "mt-6"
-       permanent
-       expand-on-hover
-       color = "black"
-       )
-       // these icons could be improved upon and also
-       // text should be bigger
-       // lmao this doesn't even lead anywhere yet
-       v-list(
-           nav
-           dense)
-           v-list-item.white--text()
-               v-list-item-icon()
-                   v-icon(
-                       color = "purple accent-1"
-                    ) {{ "mdi-card-text-outline" }}
-               v-list-item-title() Description
-           v-list-item.white--text()
-               v-list-item-icon()
-                   v-icon(
-                       color = "purple accent-1"
-                    ) {{ "mdi-cart" }}
-               v-list-item-title() Materials 
-           v-list-item.white--text()
-               v-list-item-icon()
-                   v-icon(
-                       color = "purple accent-1"
-                    ) {{ "mdi-image-edit-outline" }}
-               v-list-item-title() Diagram
-           v-list-item.white--text()
-               v-list-item-icon()
-                   v-icon(
-                       color = "purple accent-1"
-                    ) {{ "mdi-code-tags" }}
-               v-list-item-title() Code
-           v-list-item.white--text()
-               v-list-item-icon()
-                   v-icon(
-                       color = "purple accent-1"
-                    ) {{ "mdi-presentation-play" }}
-               v-list-item-title() Demonstration
-
-   // content
-   v-main
-       h2 Arduino Smoke Detector
+   v-row
+       v-col
+          // sidebar
+          v-navigation-drawer(
+              class = "mt-6"
+              permanent
+              expand-on-hover
+              color = "black"
+              )
+              // these icons could be improved upon and also
+              // text should be bigger
+              // lmao this doesn't even lead anywhere yet
+              v-list(
+                  nav
+                  dense)
+                  v-list-item.white--text()
+                      v-list-item-icon()
+                          v-icon(
+                              color = "purple accent-1"
+                           ) {{ "mdi-card-text-outline" }}
+                      v-list-item-title() Description
+                  v-list-item.white--text()
+                      v-list-item-icon()
+                          v-icon(
+                              color = "purple accent-1"
+                           ) {{ "mdi-cart" }}
+                      v-list-item-title() Materials 
+                  v-list-item.white--text()
+                      v-list-item-icon()
+                          v-icon(
+                              color = "purple accent-1"
+                           ) {{ "mdi-image-edit-outline" }}
+                      v-list-item-title() Diagram
+                  v-list-item.white--text()
+                      v-list-item-icon()
+                          v-icon(
+                              color = "purple accent-1"
+                           ) {{ "mdi-code-tags" }}
+                      v-list-item-title() Code
+                  v-list-item.white--text()
+                      v-list-item-icon()
+                          v-icon(
+                              color = "purple accent-1"
+                           ) {{ "mdi-presentation-play" }}
+                      v-list-item-title() Demonstration
+       // cols = "8" is friendly to the expanded veresion of the
+       //navbar so find a way to change to that when hovering over
+       //the navbar?
+       v-col(cols = "11")
+          // content
+          v-main
+              h2 Arduino Smoke Detector
 
     
 </template>
