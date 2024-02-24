@@ -4,6 +4,9 @@ Full format revamp coming soon!
 <br><br>
 
 ## General TO-DO
+- **HIGH PRIORITY**
+    - Figure out how to push on replit (a lot of games need fixing)
+    - Figure out why deploy isn't working (website website is severely outdated)
 - create a table of contents
 - get my tetris working
 - get my calculator working
@@ -42,12 +45,12 @@ cd ~
 
 test deploy
 ```bash
-cd ~/nuxt2; ./deploy.sh
+cd ~/touchgrass/nuxt2; ./deploy.sh
 
-cd ~/nuxt2; git remote -v 
-cd ~/nuxt2; git remote set-url origin git@github.com:ijessicachen/nuxt2.git
-cd ~/ijessicachen.github.com; git remote -v
-cd ~/ijessicachen.github.com; git remote set-url origin git@github.com:ijessicachen/ijessicachen.github.com.git
+cd ~/touchgrass/nuxt2; git remote -v 
+cd ~/touchgrass/nuxt2; git remote set-url origin git@github.com:ijessicachen/nuxt2.git
+cd ~/touchgrass/ijessicachen.github.com; git remote -v
+cd ~/touchgrass/ijessicachen.github.com; git remote set-url origin git@github.com:ijessicachen/ijessicachen.github.com.git
 
 npm -version
 nvm -version
@@ -58,6 +61,7 @@ Error: error:0308010C:digital envelope routines::unsupported
 node --version
 nvm install 16.16.0
 ```
+it seems v 10.4.0 works too?
 
 
 # General things to help 

@@ -5,8 +5,8 @@
 echo "enter a comment: "
 read comment
 
-dev="/Users/jessicachen/nuxt2"
-target="/Users/jessicachen/ijessicachen.github.com"
+dev="/Users/jessicachen/touchgrass/nuxt2"
+target="/Users/jessicachen/touchgrass/ijessicachen.github.com"
 
 cd $dev
 npm run generate
