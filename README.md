@@ -102,5 +102,9 @@ G diff .
 G diff package.json
 ```
 
+## Testing
+
+To test things with nuxt.js.
+Currently this is especially pertaining to the WorkoutAI Project.
 
 
