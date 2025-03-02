@@ -6,7 +6,7 @@ Full format revamp coming soon!
 ## General TO-DO
 - **HIGH PRIORITY**
     - Figure out how to push on replit (a lot of games need fixing)
-    - Figure out why deploy isn't working (website website is severely outdated)
+    - Update this website to be with NuxtHub
 - create a table of contents
 - get my tetris working
 - get my calculator working
